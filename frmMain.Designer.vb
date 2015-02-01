@@ -26,6 +26,7 @@ Partial Class frmMain
         Me.mnuFile = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuFileNew = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuFileClose = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuFileExit = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuEdit = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuEditCut = New System.Windows.Forms.ToolStripMenuItem()
@@ -36,8 +37,6 @@ Partial Class frmMain
         Me.mnuWindowTileVertical = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuWindowTileHorizontal = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuWindowArrangeIcons = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.MenuStrip.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -63,19 +62,24 @@ Partial Class frmMain
         '
         Me.mnuFileNew.Name = "mnuFileNew"
         Me.mnuFileNew.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
-        Me.mnuFileNew.Size = New System.Drawing.Size(152, 22)
+        Me.mnuFileNew.Size = New System.Drawing.Size(141, 22)
         Me.mnuFileNew.Text = "New"
         '
         'mnuFileClose
         '
         Me.mnuFileClose.Name = "mnuFileClose"
-        Me.mnuFileClose.Size = New System.Drawing.Size(152, 22)
+        Me.mnuFileClose.Size = New System.Drawing.Size(141, 22)
         Me.mnuFileClose.Text = "Close"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(138, 6)
         '
         'mnuFileExit
         '
         Me.mnuFileExit.Name = "mnuFileExit"
-        Me.mnuFileExit.Size = New System.Drawing.Size(152, 22)
+        Me.mnuFileExit.Size = New System.Drawing.Size(141, 22)
         Me.mnuFileExit.Text = "Exit"
         '
         'mnuEdit
@@ -89,26 +93,26 @@ Partial Class frmMain
         '
         Me.mnuEditCut.Name = "mnuEditCut"
         Me.mnuEditCut.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
-        Me.mnuEditCut.Size = New System.Drawing.Size(152, 22)
+        Me.mnuEditCut.Size = New System.Drawing.Size(144, 22)
         Me.mnuEditCut.Text = "Cu&t"
         '
         'mnuEditCopy
         '
         Me.mnuEditCopy.Name = "mnuEditCopy"
         Me.mnuEditCopy.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.mnuEditCopy.Size = New System.Drawing.Size(152, 22)
+        Me.mnuEditCopy.Size = New System.Drawing.Size(144, 22)
         Me.mnuEditCopy.Text = "Copy"
         '
         'mnuEditPaste
         '
         Me.mnuEditPaste.Name = "mnuEditPaste"
         Me.mnuEditPaste.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
-        Me.mnuEditPaste.Size = New System.Drawing.Size(152, 22)
+        Me.mnuEditPaste.Size = New System.Drawing.Size(144, 22)
         Me.mnuEditPaste.Text = "Paste"
         '
         'mnuWindow
         '
-        Me.mnuWindow.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuWindowCascade, Me.mnuWindowTileVertical, Me.mnuWindowTileHorizontal, Me.mnuWindowArrangeIcons, Me.ToolStripSeparator2})
+        Me.mnuWindow.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuWindowCascade, Me.mnuWindowTileVertical, Me.mnuWindowTileHorizontal, Me.mnuWindowArrangeIcons})
         Me.mnuWindow.Name = "mnuWindow"
         Me.mnuWindow.Size = New System.Drawing.Size(63, 20)
         Me.mnuWindow.Text = "&Window"
@@ -136,16 +140,6 @@ Partial Class frmMain
         Me.mnuWindowArrangeIcons.Name = "mnuWindowArrangeIcons"
         Me.mnuWindowArrangeIcons.Size = New System.Drawing.Size(152, 22)
         Me.mnuWindowArrangeIcons.Text = "Arrange Icons"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(149, 6)
         '
         'frmMain
         '
@@ -178,6 +172,5 @@ Partial Class frmMain
     Friend WithEvents mnuWindowTileHorizontal As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuWindowArrangeIcons As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
 
 End Class
