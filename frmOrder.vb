@@ -50,6 +50,14 @@
             ' Add coffee flavors to combo box
             cboItem.Items.Add(coffee.key)
         Next
+        ' make price and total textboxes readonly
+        txtPrice.ReadOnly = True
+        txtTotal.ReadOnly = True
+        ' text align to the right
+        txtPrice.TextAlign = HorizontalAlignment.Right
+        nudQuantity.TextAlign = HorizontalAlignment.Right
+        txtTotal.TextAlign = HorizontalAlignment.Right
+
         ' add order controls to the arrays
         cboLines.Add(cboItem)
         txtPLines.Add(txtPrice)
@@ -134,18 +142,23 @@
         txtP.Left = txtPrice.Left
         txtP.Width = txtPrice.Width
         txtP.Tag = n + 1
+        txtP.ReadOnly = True
+        txtP.TextAlign = HorizontalAlignment.Right
 
         Dim nudQ As New NumericUpDown
         nudQ.Top = nextPosition
         nudQ.Left = nudQuantity.Left
         nudQ.Width = nudQuantity.Width
         nudQ.Tag = n + 1
+        nudQ.TextAlign = HorizontalAlignment.Right
 
         Dim txtT As New TextBox
         txtT.Top = nextPosition
         txtT.Left = txtTotal.Left
         txtT.Width = txtTotal.Width
         txtT.Tag = n + 1
+        txtT.ReadOnly = True
+        txtT.TextAlign = HorizontalAlignment.Right
 
 
         ' add to group box
