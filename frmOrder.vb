@@ -1,5 +1,6 @@
 ﻿Public Class frmOrder
 
+    Public Const taxPercent = 0.0875
     Private coffeeMenu As New Dictionary(Of String, String)
     Private cboLines As New ArrayList
     Private txtPLines As New ArrayList
@@ -65,14 +66,6 @@
         txtTLines.Add(txtTotal)
     End Sub
 
-    Public Sub calculateItemTotal()
-
-    End Sub
-
-    Public Sub calculateOrderTotal()
-
-    End Sub
-
     Private Sub cboItem_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboItem.SelectedIndexChanged
         ' Set the price when an Item is chosen from the combo box
         txtPrice.Text = coffeeMenu.Item(sender.Text)
@@ -81,7 +74,7 @@
             nudQuantity.Value = 1
         End If
         Dim total As Double = txtPrice.Text * nudQuantity.Value
-        txtTotal.Text = total
+        txtTotal.Text = Format(total, "0.00")
     End Sub
 
     Private Sub cboItem_SelectedIndexChanged1(sender As Object, e As EventArgs)
@@ -94,7 +87,7 @@
             nudQLines(index).Value = 1
         End If
         Dim total As Double = txtPLines(index).Text * nudQLines(index).Value
-        txtTLines(index).Text = total
+        txtTLines(index).Text = Format(total, "0.00")
     End Sub
 
     Private Sub nudQuantity_ValueChanged(sender As Object, e As EventArgs) Handles nudQuantity.ValueChanged
@@ -102,7 +95,7 @@
             Dim total As Double = txtPrice.Text * nudQuantity.Value
             'Console.WriteLine("Price is: " & txtPrice.Text)
             'Console.WriteLine("Quantity is: " & nudQuantity.Value)
-            txtTotal.Text = total
+            txtTotal.Text = Format(total, "0.00")
         End If
     End Sub
 
@@ -110,16 +103,10 @@
         Dim index = CType(sender, NumericUpDown).Tag
         'index = index - 1
         Console.WriteLine("Quantity changed, index: " & index)
-        'Console.WriteLine("Quantity changed, price index: " & cboLines(index))
-        'Console.WriteLine("Quantity changed, price index: " & txtPLines(index))
-        'Console.WriteLine("Quantity changed, price index: " & nudQLines(index))
         If Not IsNothing(cboLines(index).SelectedItem) Then
             Dim total As Double = txtPLines(index).Text * nudQLines(index).Value
-            txtTLines(index).Text = total
+            txtTLines(index).Text = Format(total, "0.00")
         End If
-        'Console.WriteLine(txtPLines(index).Text)
-        'Console.WriteLine(coffeeMenu.Item(sender.Text))
-        'txtPLines(index).Text = coffeeMenu.Item(sender.Text)
     End Sub
 
 
@@ -171,7 +158,6 @@
         txtPLines.Add(txtP)
         nudQLines.Add(nudQ)
         txtTLines.Add(txtT)
-        Console.WriteLine("Adding..." & cbo.Tag & txtP.Tag & nudQ.Tag & txtT.Tag)
         ' add each coffee flavor to the combo box
         For Each coffee As Object In coffeeMenu
             cbo.Items.Add(coffee.key)
@@ -182,11 +168,92 @@
         AddHandler nudQ.ValueChanged, AddressOf nudQuantity_ValueChanged1
     End Sub
 
-    Public Sub validateInput()
+    ' Validations
+    Function isInteger(ByVal input As String, ByVal title As String) As Boolean
+        Try
+            Dim numValue As Integer = Convert.ToInt32(input)
+            Console.WriteLine(numValue)
+            If numValue > 0 Then
+                Return True
+            Else
+                MessageBox.Show(title & " must be an integer and greater than 0.", title)
+                Return False
+            End If
+        Catch ex As Exception
+            MessageBox.Show(title & " must be an integer and greater than 0.", title)
+            Return False
+        End Try
+    End Function
 
+    Function isPresent(ByVal input As String, ByVal title As String) As Boolean
+
+        If input <> "" Then
+            Return True
+        Else
+            MessageBox.Show(title & " must not be blank.", title)
+            Return False
+        End If
+
+    End Function
+
+
+    Public Sub validateInput()
+        
+    End Sub
+
+    Private Sub calculateOrderTotal()
+        ' declare variables
+        Dim foodTotal As Double = 0
+        Dim salesTax As Double = 0
+        Dim orderTotal As Double = 0
+
+        ' loop through each line, total up costs
+        For Each total As Object In txtTLines
+            Dim amount As Double = 0
+            ' convert total to double
+            Double.TryParse(total.Text, amount)
+            foodTotal += amount
+        Next
+
+        ' calculate sales tax
+        salesTax = foodTotal * taxPercent
+        ' calculate order total
+        orderTotal = foodTotal + salesTax
+
+        txtFoodTotal.Text = FormatCurrency(foodTotal, 2)
+        txtSalesTax.Text = FormatCurrency(salesTax, 2)
+        txtOrderTotal.Text = FormatCurrency(orderTotal, 2)
     End Sub
 
     Private Sub btnTotal_Click(sender As Object, e As EventArgs) Handles btnTotal.Click
+        'If Not isInteger(txtOrderNumber.Text) And txtOrderNumber.Text > 0 Then
+        'MessageBox.Show("Order # must be greater than or equal to 1", "Error")
+        'Else
+        'MessageBox.Show("Works!", "Sup")
+        'End If
+
+        ' validation for order number
+        Dim validated As Boolean = False
+        If isPresent(txtOrderNumber.Text, "Order Number") AndAlso isInteger(txtOrderNumber.Text, "Order Number") Then
+            If isPresent(txtServer.Text, "Server Name") Then
+                If isInteger(nudQuantity.Value, "Quantity") Then
+                    For n As Integer = 0 To cboLines.Count - 1
+                        If isInteger(nudQLines(n).Text, "Quantity") AndAlso isPresent(cboLines(n).Text, "Coffee Flavor") Then
+                            validated = True
+                        Else
+                            validated = False
+                            Return
+                        End If
+                    Next
+                    If validated = True Then
+                        Console.WriteLine("All validations passed! Calculating total")
+                        calculateOrderTotal()
+                    End If
+                End If
+            End If
+        End If
+
+
 
     End Sub
 

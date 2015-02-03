@@ -26,35 +26,35 @@ Partial Class frmOrder
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtOrderNumber = New System.Windows.Forms.TextBox()
+        Me.txtServer = New System.Windows.Forms.TextBox()
         Me.grpMenu = New System.Windows.Forms.GroupBox()
         Me.grpOrderSummary = New System.Windows.Forms.GroupBox()
-        Me.lblTotal = New System.Windows.Forms.Label()
-        Me.lblQuantity = New System.Windows.Forms.Label()
-        Me.lblPrice = New System.Windows.Forms.Label()
-        Me.lblItem = New System.Windows.Forms.Label()
-        Me.nudQuantity = New System.Windows.Forms.NumericUpDown()
-        Me.txtTotal = New System.Windows.Forms.TextBox()
-        Me.txtPrice = New System.Windows.Forms.TextBox()
+        Me.panOrderSummary = New System.Windows.Forms.Panel()
         Me.cboItem = New System.Windows.Forms.ComboBox()
+        Me.lblTotal = New System.Windows.Forms.Label()
+        Me.txtPrice = New System.Windows.Forms.TextBox()
+        Me.lblQuantity = New System.Windows.Forms.Label()
+        Me.txtTotal = New System.Windows.Forms.TextBox()
+        Me.lblPrice = New System.Windows.Forms.Label()
+        Me.nudQuantity = New System.Windows.Forms.NumericUpDown()
+        Me.lblItem = New System.Windows.Forms.Label()
         Me.grpOrderTotal = New System.Windows.Forms.GroupBox()
-        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.txtOrderTotal = New System.Windows.Forms.TextBox()
         Me.lblOrderTotal = New System.Windows.Forms.Label()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.txtSalesTax = New System.Windows.Forms.TextBox()
         Me.lblSalesTax = New System.Windows.Forms.Label()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.txtFoodTotal = New System.Windows.Forms.TextBox()
         Me.lblFoodTotal = New System.Windows.Forms.Label()
         Me.btnTotal = New System.Windows.Forms.Button()
         Me.btnNewOrder = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.dtpDateTime = New System.Windows.Forms.DateTimePicker()
         Me.btnAdd = New System.Windows.Forms.Button()
-        Me.panOrderSummary = New System.Windows.Forms.Panel()
         Me.grpOrderSummary.SuspendLayout()
+        Me.panOrderSummary.SuspendLayout()
         CType(Me.nudQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpOrderTotal.SuspendLayout()
-        Me.panOrderSummary.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -94,19 +94,19 @@ Partial Class frmOrder
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Cal Poly Coffee Roasters"
         '
-        'TextBox1
+        'txtOrderNumber
         '
-        Me.TextBox1.Location = New System.Drawing.Point(82, 48)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(62, 20)
-        Me.TextBox1.TabIndex = 4
+        Me.txtOrderNumber.Location = New System.Drawing.Point(82, 48)
+        Me.txtOrderNumber.Name = "txtOrderNumber"
+        Me.txtOrderNumber.Size = New System.Drawing.Size(62, 20)
+        Me.txtOrderNumber.TabIndex = 4
         '
-        'TextBox2
+        'txtServer
         '
-        Me.TextBox2.Location = New System.Drawing.Point(82, 79)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(121, 20)
-        Me.TextBox2.TabIndex = 5
+        Me.txtServer.Location = New System.Drawing.Point(82, 79)
+        Me.txtServer.Name = "txtServer"
+        Me.txtServer.Size = New System.Drawing.Size(121, 20)
+        Me.txtServer.TabIndex = 5
         '
         'grpMenu
         '
@@ -127,6 +127,30 @@ Partial Class frmOrder
         Me.grpOrderSummary.TabStop = False
         Me.grpOrderSummary.Text = "Order Summary"
         '
+        'panOrderSummary
+        '
+        Me.panOrderSummary.AutoScroll = True
+        Me.panOrderSummary.Controls.Add(Me.cboItem)
+        Me.panOrderSummary.Controls.Add(Me.lblTotal)
+        Me.panOrderSummary.Controls.Add(Me.txtPrice)
+        Me.panOrderSummary.Controls.Add(Me.lblQuantity)
+        Me.panOrderSummary.Controls.Add(Me.txtTotal)
+        Me.panOrderSummary.Controls.Add(Me.lblPrice)
+        Me.panOrderSummary.Controls.Add(Me.nudQuantity)
+        Me.panOrderSummary.Controls.Add(Me.lblItem)
+        Me.panOrderSummary.Location = New System.Drawing.Point(6, 16)
+        Me.panOrderSummary.Name = "panOrderSummary"
+        Me.panOrderSummary.Size = New System.Drawing.Size(377, 241)
+        Me.panOrderSummary.TabIndex = 8
+        '
+        'cboItem
+        '
+        Me.cboItem.FormattingEnabled = True
+        Me.cboItem.Location = New System.Drawing.Point(8, 22)
+        Me.cboItem.Name = "cboItem"
+        Me.cboItem.Size = New System.Drawing.Size(142, 21)
+        Me.cboItem.TabIndex = 0
+        '
         'lblTotal
         '
         Me.lblTotal.AutoSize = True
@@ -135,6 +159,13 @@ Partial Class frmOrder
         Me.lblTotal.Size = New System.Drawing.Size(31, 13)
         Me.lblTotal.TabIndex = 7
         Me.lblTotal.Text = "Total"
+        '
+        'txtPrice
+        '
+        Me.txtPrice.Location = New System.Drawing.Point(156, 23)
+        Me.txtPrice.Name = "txtPrice"
+        Me.txtPrice.Size = New System.Drawing.Size(61, 20)
+        Me.txtPrice.TabIndex = 1
         '
         'lblQuantity
         '
@@ -145,6 +176,13 @@ Partial Class frmOrder
         Me.lblQuantity.TabIndex = 6
         Me.lblQuantity.Text = "Quantity"
         '
+        'txtTotal
+        '
+        Me.txtTotal.Location = New System.Drawing.Point(286, 22)
+        Me.txtTotal.Name = "txtTotal"
+        Me.txtTotal.Size = New System.Drawing.Size(61, 20)
+        Me.txtTotal.TabIndex = 2
+        '
         'lblPrice
         '
         Me.lblPrice.AutoSize = True
@@ -153,6 +191,13 @@ Partial Class frmOrder
         Me.lblPrice.Size = New System.Drawing.Size(31, 13)
         Me.lblPrice.TabIndex = 5
         Me.lblPrice.Text = "Price"
+        '
+        'nudQuantity
+        '
+        Me.nudQuantity.Location = New System.Drawing.Point(223, 22)
+        Me.nudQuantity.Name = "nudQuantity"
+        Me.nudQuantity.Size = New System.Drawing.Size(57, 20)
+        Me.nudQuantity.TabIndex = 3
         '
         'lblItem
         '
@@ -163,42 +208,13 @@ Partial Class frmOrder
         Me.lblItem.TabIndex = 4
         Me.lblItem.Text = "Item"
         '
-        'nudQuantity
-        '
-        Me.nudQuantity.Location = New System.Drawing.Point(223, 22)
-        Me.nudQuantity.Name = "nudQuantity"
-        Me.nudQuantity.Size = New System.Drawing.Size(57, 20)
-        Me.nudQuantity.TabIndex = 3
-        '
-        'txtTotal
-        '
-        Me.txtTotal.Location = New System.Drawing.Point(286, 22)
-        Me.txtTotal.Name = "txtTotal"
-        Me.txtTotal.Size = New System.Drawing.Size(61, 20)
-        Me.txtTotal.TabIndex = 2
-        '
-        'txtPrice
-        '
-        Me.txtPrice.Location = New System.Drawing.Point(156, 23)
-        Me.txtPrice.Name = "txtPrice"
-        Me.txtPrice.Size = New System.Drawing.Size(61, 20)
-        Me.txtPrice.TabIndex = 1
-        '
-        'cboItem
-        '
-        Me.cboItem.FormattingEnabled = True
-        Me.cboItem.Location = New System.Drawing.Point(8, 22)
-        Me.cboItem.Name = "cboItem"
-        Me.cboItem.Size = New System.Drawing.Size(142, 21)
-        Me.cboItem.TabIndex = 0
-        '
         'grpOrderTotal
         '
-        Me.grpOrderTotal.Controls.Add(Me.TextBox8)
+        Me.grpOrderTotal.Controls.Add(Me.txtOrderTotal)
         Me.grpOrderTotal.Controls.Add(Me.lblOrderTotal)
-        Me.grpOrderTotal.Controls.Add(Me.TextBox7)
+        Me.grpOrderTotal.Controls.Add(Me.txtSalesTax)
         Me.grpOrderTotal.Controls.Add(Me.lblSalesTax)
-        Me.grpOrderTotal.Controls.Add(Me.TextBox6)
+        Me.grpOrderTotal.Controls.Add(Me.txtFoodTotal)
         Me.grpOrderTotal.Controls.Add(Me.lblFoodTotal)
         Me.grpOrderTotal.Location = New System.Drawing.Point(218, 314)
         Me.grpOrderTotal.Name = "grpOrderTotal"
@@ -207,12 +223,13 @@ Partial Class frmOrder
         Me.grpOrderTotal.TabStop = False
         Me.grpOrderTotal.Text = "OrderTotal"
         '
-        'TextBox8
+        'txtOrderTotal
         '
-        Me.TextBox8.Location = New System.Drawing.Point(81, 90)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(102, 20)
-        Me.TextBox8.TabIndex = 7
+        Me.txtOrderTotal.Location = New System.Drawing.Point(81, 90)
+        Me.txtOrderTotal.Name = "txtOrderTotal"
+        Me.txtOrderTotal.Size = New System.Drawing.Size(102, 20)
+        Me.txtOrderTotal.TabIndex = 7
+        Me.txtOrderTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'lblOrderTotal
         '
@@ -223,12 +240,13 @@ Partial Class frmOrder
         Me.lblOrderTotal.TabIndex = 6
         Me.lblOrderTotal.Text = "Order Total:"
         '
-        'TextBox7
+        'txtSalesTax
         '
-        Me.TextBox7.Location = New System.Drawing.Point(81, 54)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(102, 20)
-        Me.TextBox7.TabIndex = 5
+        Me.txtSalesTax.Location = New System.Drawing.Point(81, 54)
+        Me.txtSalesTax.Name = "txtSalesTax"
+        Me.txtSalesTax.Size = New System.Drawing.Size(102, 20)
+        Me.txtSalesTax.TabIndex = 5
+        Me.txtSalesTax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'lblSalesTax
         '
@@ -239,12 +257,13 @@ Partial Class frmOrder
         Me.lblSalesTax.TabIndex = 4
         Me.lblSalesTax.Text = "Sales Tax:"
         '
-        'TextBox6
+        'txtFoodTotal
         '
-        Me.TextBox6.Location = New System.Drawing.Point(81, 18)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(102, 20)
-        Me.TextBox6.TabIndex = 3
+        Me.txtFoodTotal.Location = New System.Drawing.Point(81, 18)
+        Me.txtFoodTotal.Name = "txtFoodTotal"
+        Me.txtFoodTotal.Size = New System.Drawing.Size(102, 20)
+        Me.txtFoodTotal.TabIndex = 3
+        Me.txtFoodTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'lblFoodTotal
         '
@@ -282,13 +301,13 @@ Partial Class frmOrder
         Me.btnClose.Text = "&Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
-        'DateTimePicker1
+        'dtpDateTime
         '
-        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(82, 109)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(121, 20)
-        Me.DateTimePicker1.TabIndex = 8
+        Me.dtpDateTime.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpDateTime.Location = New System.Drawing.Point(82, 110)
+        Me.dtpDateTime.Name = "dtpDateTime"
+        Me.dtpDateTime.Size = New System.Drawing.Size(121, 20)
+        Me.dtpDateTime.TabIndex = 8
         '
         'btnAdd
         '
@@ -299,37 +318,21 @@ Partial Class frmOrder
         Me.btnAdd.Text = "+ Add"
         Me.btnAdd.UseVisualStyleBackColor = True
         '
-        'panOrderSummary
-        '
-        Me.panOrderSummary.AutoScroll = True
-        Me.panOrderSummary.Controls.Add(Me.cboItem)
-        Me.panOrderSummary.Controls.Add(Me.lblTotal)
-        Me.panOrderSummary.Controls.Add(Me.txtPrice)
-        Me.panOrderSummary.Controls.Add(Me.lblQuantity)
-        Me.panOrderSummary.Controls.Add(Me.txtTotal)
-        Me.panOrderSummary.Controls.Add(Me.lblPrice)
-        Me.panOrderSummary.Controls.Add(Me.nudQuantity)
-        Me.panOrderSummary.Controls.Add(Me.lblItem)
-        Me.panOrderSummary.Location = New System.Drawing.Point(6, 16)
-        Me.panOrderSummary.Name = "panOrderSummary"
-        Me.panOrderSummary.Size = New System.Drawing.Size(377, 241)
-        Me.panOrderSummary.TabIndex = 8
-        '
         'frmOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(619, 445)
         Me.Controls.Add(Me.btnAdd)
-        Me.Controls.Add(Me.DateTimePicker1)
+        Me.Controls.Add(Me.dtpDateTime)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.btnNewOrder)
         Me.Controls.Add(Me.btnTotal)
         Me.Controls.Add(Me.grpOrderTotal)
         Me.Controls.Add(Me.grpOrderSummary)
         Me.Controls.Add(Me.grpMenu)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtServer)
+        Me.Controls.Add(Me.txtOrderNumber)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -337,11 +340,11 @@ Partial Class frmOrder
         Me.Name = "frmOrder"
         Me.Text = "frmOrder"
         Me.grpOrderSummary.ResumeLayout(False)
+        Me.panOrderSummary.ResumeLayout(False)
+        Me.panOrderSummary.PerformLayout()
         CType(Me.nudQuantity, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpOrderTotal.ResumeLayout(False)
         Me.grpOrderTotal.PerformLayout()
-        Me.panOrderSummary.ResumeLayout(False)
-        Me.panOrderSummary.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -350,8 +353,8 @@ Partial Class frmOrder
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents txtOrderNumber As System.Windows.Forms.TextBox
+    Friend WithEvents txtServer As System.Windows.Forms.TextBox
     Friend WithEvents grpMenu As System.Windows.Forms.GroupBox
     Friend WithEvents grpOrderSummary As System.Windows.Forms.GroupBox
     Friend WithEvents nudQuantity As System.Windows.Forms.NumericUpDown
@@ -359,20 +362,20 @@ Partial Class frmOrder
     Friend WithEvents txtPrice As System.Windows.Forms.TextBox
     Friend WithEvents cboItem As System.Windows.Forms.ComboBox
     Friend WithEvents grpOrderTotal As System.Windows.Forms.GroupBox
-    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
+    Friend WithEvents txtFoodTotal As System.Windows.Forms.TextBox
     Friend WithEvents lblFoodTotal As System.Windows.Forms.Label
     Friend WithEvents btnTotal As System.Windows.Forms.Button
     Friend WithEvents btnNewOrder As System.Windows.Forms.Button
     Friend WithEvents btnClose As System.Windows.Forms.Button
-    Friend WithEvents TextBox8 As System.Windows.Forms.TextBox
+    Friend WithEvents txtOrderTotal As System.Windows.Forms.TextBox
     Friend WithEvents lblOrderTotal As System.Windows.Forms.Label
-    Friend WithEvents TextBox7 As System.Windows.Forms.TextBox
+    Friend WithEvents txtSalesTax As System.Windows.Forms.TextBox
     Friend WithEvents lblSalesTax As System.Windows.Forms.Label
     Friend WithEvents lblTotal As System.Windows.Forms.Label
     Friend WithEvents lblQuantity As System.Windows.Forms.Label
     Friend WithEvents lblPrice As System.Windows.Forms.Label
     Friend WithEvents lblItem As System.Windows.Forms.Label
-    Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents dtpDateTime As System.Windows.Forms.DateTimePicker
     Friend WithEvents btnAdd As System.Windows.Forms.Button
     Friend WithEvents panOrderSummary As System.Windows.Forms.Panel
 End Class
