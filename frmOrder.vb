@@ -6,6 +6,7 @@
     Private txtPLines As New ArrayList
     Private nudQLines As New ArrayList
     Private txtTLines As New ArrayList
+    Private orderSummaryLines() As Object = {cboLines, txtPLines, nudQLines, txtTLines}
 
     Private Sub frmOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' add coffees and prices to collection
@@ -196,11 +197,6 @@
 
     End Function
 
-
-    Public Sub validateInput()
-        
-    End Sub
-
     Private Sub calculateOrderTotal()
         ' declare variables
         Dim foodTotal As Double = 0
@@ -226,18 +222,14 @@
     End Sub
 
     Private Sub btnTotal_Click(sender As Object, e As EventArgs) Handles btnTotal.Click
-        'If Not isInteger(txtOrderNumber.Text) And txtOrderNumber.Text > 0 Then
-        'MessageBox.Show("Order # must be greater than or equal to 1", "Error")
-        'Else
-        'MessageBox.Show("Works!", "Sup")
-        'End If
-
-        ' validation for order number
+        ' validations
         Dim validated As Boolean = False
         If isPresent(txtOrderNumber.Text, "Order Number") AndAlso isInteger(txtOrderNumber.Text, "Order Number") Then
             If isPresent(txtServer.Text, "Server Name") Then
                 If isInteger(nudQuantity.Value, "Quantity") Then
+                    ' loop through array of lines, get index
                     For n As Integer = 0 To cboLines.Count - 1
+                        ' use index to validate presence of combo box and quantity
                         If isInteger(nudQLines(n).Text, "Quantity") AndAlso isPresent(cboLines(n).Text, "Coffee Flavor") Then
                             validated = True
                         Else
@@ -245,6 +237,7 @@
                             Return
                         End If
                     Next
+                    ' calculate order total if validation passes
                     If validated = True Then
                         Console.WriteLine("All validations passed! Calculating total")
                         calculateOrderTotal()
@@ -253,15 +246,55 @@
             End If
         End If
 
-
-
     End Sub
 
     Private Sub btnNewOrder_Click(sender As Object, e As EventArgs) Handles btnNewOrder.Click
+        ' clear the form
+        txtOrderNumber.Clear()
+        txtServer.Clear()
+        dtpDateTime.Value = Now
 
+        ' clear order total values
+        txtFoodTotal.Clear()
+        txtSalesTax.Clear()
+        txtOrderTotal.Clear()
+
+        ' clear the first line of order summary
+        cboItem.Text = ""
+        nudQuantity.Value = 0
+        txtPrice.Clear()
+        txtTotal.Clear()
+
+        ' loop through each order summary item
+        For n As Integer = 1 To cboLines.Count - 1
+            ' remove summary item from gui
+            For Each line As Object In orderSummaryLines
+                panOrderSummary.Controls.Remove(line(n))
+            Next
+        Next
+
+        For Each line As Object In cboLines
+            Console.WriteLine(line)
+        Next
+
+        ' remove summary item from array
+        For Each line As Object In orderSummaryLines
+            line.Clear()
+        Next
+
+        For Each line As Object In nudQLines
+            Console.WriteLine(line)
+        Next
+
+        ' re-add first line of orders to order summary list
+        cboLines.Add(cboItem)
+        txtPLines.Add(txtPrice)
+        nudQLines.Add(nudQuantity)
+        txtTLines.Add(txtTotal)
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+        ' close the form
         Me.Close()
     End Sub
 
