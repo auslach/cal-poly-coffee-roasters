@@ -22,6 +22,7 @@ Partial Class frmOrder
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmOrder))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -51,10 +52,12 @@ Partial Class frmOrder
         Me.btnClose = New System.Windows.Forms.Button()
         Me.dtpDateTime = New System.Windows.Forms.DateTimePicker()
         Me.btnAdd = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.grpOrderSummary.SuspendLayout()
         Me.panOrderSummary.SuspendLayout()
         CType(Me.nudQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpOrderTotal.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -318,11 +321,23 @@ Partial Class frmOrder
         Me.btnAdd.Text = "+ Add"
         Me.btnAdd.UseVisualStyleBackColor = True
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.CalPolyPomonaCoffeeHouse.My.Resources.Resources.coffeecup_Ballistik_Coffee_Boy_crop380w
+        Me.PictureBox1.InitialImage = CType(resources.GetObject("PictureBox1.InitialImage"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(514, 338)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(93, 81)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 15
+        Me.PictureBox1.TabStop = False
+        '
         'frmOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(619, 445)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.dtpDateTime)
         Me.Controls.Add(Me.btnClose)
@@ -345,6 +360,7 @@ Partial Class frmOrder
         CType(Me.nudQuantity, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpOrderTotal.ResumeLayout(False)
         Me.grpOrderTotal.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -378,4 +394,5 @@ Partial Class frmOrder
     Friend WithEvents dtpDateTime As System.Windows.Forms.DateTimePicker
     Friend WithEvents btnAdd As System.Windows.Forms.Button
     Friend WithEvents panOrderSummary As System.Windows.Forms.Panel
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
 End Class

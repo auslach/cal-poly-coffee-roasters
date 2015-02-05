@@ -1,6 +1,6 @@
 ﻿Public Class frmOrder
 
-    Public Const taxPercent = 0.0875
+    Public Const taxPercent = 0.0775
     Private coffeeMenu As New Dictionary(Of String, String)
     Private cboLines As New ArrayList
     Private txtPLines As New ArrayList
@@ -60,6 +60,11 @@
         nudQuantity.TextAlign = HorizontalAlignment.Right
         txtTotal.TextAlign = HorizontalAlignment.Right
 
+        ' make totals readonly
+        txtFoodTotal.ReadOnly = True
+        txtSalesTax.ReadOnly = True
+        txtOrderTotal.ReadOnly = True
+
         ' add order controls to the arrays
         cboLines.Add(cboItem)
         txtPLines.Add(txtPrice)
@@ -92,7 +97,11 @@
     End Sub
 
     Private Sub nudQuantity_ValueChanged(sender As Object, e As EventArgs) Handles nudQuantity.ValueChanged
-        If Not IsNothing(cboItem.SelectedItem) Then
+        If txtPrice.Text <> "" Then
+            Console.WriteLine("cbo: " & cboItem.Text)
+            Console.WriteLine("price: " & txtPrice.Text)
+            Console.WriteLine("quantity: " & nudQuantity.Value)
+
             Dim total As Double = txtPrice.Text * nudQuantity.Value
             'Console.WriteLine("Price is: " & txtPrice.Text)
             'Console.WriteLine("Quantity is: " & nudQuantity.Value)
