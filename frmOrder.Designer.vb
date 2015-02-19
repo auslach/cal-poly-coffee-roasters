@@ -148,6 +148,7 @@ Partial Class frmOrder
         '
         'cboItem
         '
+        Me.cboItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboItem.FormattingEnabled = True
         Me.cboItem.Location = New System.Drawing.Point(8, 22)
         Me.cboItem.Name = "cboItem"
@@ -169,6 +170,7 @@ Partial Class frmOrder
         Me.txtPrice.Name = "txtPrice"
         Me.txtPrice.Size = New System.Drawing.Size(61, 20)
         Me.txtPrice.TabIndex = 1
+        Me.txtPrice.TabStop = False
         '
         'lblQuantity
         '
@@ -185,6 +187,7 @@ Partial Class frmOrder
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.Size = New System.Drawing.Size(61, 20)
         Me.txtTotal.TabIndex = 2
+        Me.txtTotal.TabStop = False
         '
         'lblPrice
         '

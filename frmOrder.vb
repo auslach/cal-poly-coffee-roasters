@@ -64,6 +64,10 @@
         txtFoodTotal.ReadOnly = True
         txtSalesTax.ReadOnly = True
         txtOrderTotal.ReadOnly = True
+        txtFoodTotal.TabStop = False
+        txtSalesTax.TabStop = False
+        txtOrderTotal.TabStop = False
+
 
         ' add order controls to the arrays
         cboLines.Add(cboItem)
@@ -130,6 +134,7 @@
         cbo.Top = nextPosition
         cbo.Left = cboItem.Left
         cbo.Width = cboItem.Width
+        cbo.DropDownStyle = ComboBoxStyle.DropDownList
         cbo.Tag = n + 1
         Dim tool As New ToolTip
         tool.SetToolTip(cbo, "Line no: " & cbo.Tag + 1)
@@ -140,6 +145,7 @@
         txtP.Width = txtPrice.Width
         txtP.Tag = n + 1
         txtP.ReadOnly = True
+        txtP.TabStop = False
         txtP.TextAlign = HorizontalAlignment.Right
 
         Dim nudQ As New NumericUpDown
@@ -155,6 +161,7 @@
         txtT.Width = txtTotal.Width
         txtT.Tag = n + 1
         txtT.ReadOnly = True
+        txtT.TabStop = False
         txtT.TextAlign = HorizontalAlignment.Right
 
 
@@ -273,6 +280,9 @@
         nudQuantity.Value = 0
         txtPrice.Clear()
         txtTotal.Clear()
+
+        ' return focus to order number field
+        txtOrderNumber.Focus()
 
         ' loop through each order summary item
         For n As Integer = 1 To cboLines.Count - 1
