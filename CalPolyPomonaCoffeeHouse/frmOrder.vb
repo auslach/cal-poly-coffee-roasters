@@ -183,33 +183,7 @@ Public Class frmOrder
         AddHandler nudQ.ValueChanged, AddressOf nudQuantity_ValueChanged1
     End Sub
 
-    ' Validations
-    Function isInteger(ByVal input As String, ByVal title As String) As Boolean
-        Try
-            Dim numValue As Integer = Convert.ToInt32(input)
-            Console.WriteLine(numValue)
-            If numValue > 0 Then
-                Return True
-            Else
-                MessageBox.Show(title & " must be an integer and greater than 0.", title)
-                Return False
-            End If
-        Catch ex As Exception
-            MessageBox.Show(title & " must be an integer and greater than 0.", title)
-            Return False
-        End Try
-    End Function
 
-    Function isPresent(ByVal input As String, ByVal title As String) As Boolean
-
-        If input <> "" Then
-            Return True
-        Else
-            MessageBox.Show(title & " must not be blank.", title)
-            Return False
-        End If
-
-    End Function
 
     Private Sub calculateOrderTotal()
         ' declare variables
@@ -240,13 +214,13 @@ Public Class frmOrder
     Private Sub btnTotal_Click(sender As Object, e As EventArgs) Handles btnTotal.Click
         ' validations
         Dim validated As Boolean = False
-        If isPresent(txtOrderNumber.Text, "Order Number") AndAlso isInteger(txtOrderNumber.Text, "Order Number") Then
-            If isPresent(txtServer.Text, "Server Name") Then
-                If isInteger(nudQuantity.Value, "Quantity") Then
+        If ctrl.isPresent(txtOrderNumber.Text, "Order Number") AndAlso ctrl.isInteger(txtOrderNumber.Text, "Order Number") Then
+            If ctrl.isPresent(txtServer.Text, "Server Name") Then
+                If ctrl.isInteger(nudQuantity.Value, "Quantity") Then
                     ' loop through array of lines, get index
                     For n As Integer = 0 To cboLines.Count - 1
                         ' use index to validate presence of combo box and quantity
-                        If isInteger(nudQLines(n).Text, "Quantity") AndAlso isPresent(cboLines(n).Text, "Coffee Flavor") Then
+                        If ctrl.isInteger(nudQLines(n).Text, "Quantity") AndAlso ctrl.isPresent(cboLines(n).Text, "Coffee Flavor") Then
                             validated = True
                         Else
                             validated = False
@@ -279,7 +253,6 @@ Public Class frmOrder
                 End If
             End If
         End If
-
     End Sub
 
     Private Sub btnNewOrder_Click(sender As Object, e As EventArgs) Handles btnNewOrder.Click
@@ -347,13 +320,8 @@ Public Class frmOrder
         End If
     End Sub
 
-    Public Sub clickBtnSave()
-        btnSave.PerformClick()
-    End Sub
-
     Private Sub btnGetOrder_Click(sender As Object, e As EventArgs) Handles btnGetOrder.Click
-
-        If isPresent(txtOrderNumber.Text, "Order Number") AndAlso isInteger(txtOrderNumber.Text, "Order Number") AndAlso ctrl.orderExists(txtOrderNumber.Text, "Order Number") Then
+        If ctrl.isPresent(txtOrderNumber.Text, "Order Number") AndAlso ctrl.isInteger(txtOrderNumber.Text, "Order Number") AndAlso ctrl.orderExists(txtOrderNumber.Text, "Order Number") Then
             myOrder = ctrl.getOrder(txtOrderNumber.Text)
 
             ' clear the form 
@@ -383,8 +351,5 @@ Public Class frmOrder
             Next
 
         End If
-
-
-
     End Sub
 End Class
