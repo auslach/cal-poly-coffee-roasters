@@ -12,6 +12,9 @@
         Return m_OrderLines(index)
     End Function
 
+    Public Function countItems()
+        Return m_OrderLines.Count
+    End Function
 
     Public Property ID As String
         Get

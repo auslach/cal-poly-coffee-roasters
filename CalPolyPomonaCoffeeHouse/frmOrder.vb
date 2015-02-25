@@ -356,6 +356,9 @@ Public Class frmOrder
         If isPresent(txtOrderNumber.Text, "Order Number") AndAlso isInteger(txtOrderNumber.Text, "Order Number") AndAlso ctrl.orderExists(txtOrderNumber.Text, "Order Number") Then
             myOrder = ctrl.getOrder(txtOrderNumber.Text)
 
+            ' clear the form 
+            btnNewOrder.PerformClick()
+
             txtOrderNumber.Text = myOrder.ID
             txtServer.Text = myOrder.server
             dtpDateTime.Text = myOrder.orderDate
@@ -363,12 +366,25 @@ Public Class frmOrder
             txtFoodTotal.Text = FormatCurrency(myOrder.total, 2)
             txtSalesTax.Text = FormatCurrency(myOrder.tax, 2)
             txtOrderTotal.Text = FormatCurrency(myOrder.grandTotal, 2)
+
+            For n As Integer = 0 To myOrder.countItems - 2
+                btnAdd.PerformClick()
+            Next
+
+            ' loop through each order line
+            ' add a new line for each order line
+            ' fill out values for each order line
+
+            For n As Integer = 0 To myOrder.countItems - 1
+                cboLines(n).Text = myOrder.getLine(n).name
+                txtPLines(n).Text = myOrder.getLine(n).price
+                nudQLines(n).Text = myOrder.getLine(n).qty
+                txtTLines(n).Text = myOrder.getLine(n).lineTotal
+            Next
+
         End If
 
 
-        ' loop through each order line
-        ' add a new line for each order line
-        ' fill out values for each order line
 
     End Sub
 End Class

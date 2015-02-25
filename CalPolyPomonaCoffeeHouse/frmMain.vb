@@ -10,8 +10,16 @@ Public Class frmMain
     Private Sub mnuFile_DropDownOpening(sender As Object, e As EventArgs) Handles mnuFile.DropDownOpening
         If Me.ActiveMdiChild IsNot Nothing Then
             mnuFileClose.Enabled = True
+            mnuFileSave.Enabled = True
+            mnuFileDelete.Enabled = True
+            If Me.ActiveMdiChild Is frmOrderSummary Then
+                mnuFileSave.Enabled = False
+                mnuFileDelete.Enabled = False
+            End If
         Else
             mnuFileClose.Enabled = False
+            mnuFileSave.Enabled = False
+            mnuFileDelete.Enabled = False
         End If
     End Sub
 
@@ -123,7 +131,7 @@ Public Class frmMain
         mnuFileNew.PerformClick()
     End Sub
 
-    Private Sub SaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveToolStripMenuItem.Click
+    Private Sub mnuFileSave_Click(sender As Object, e As EventArgs) Handles mnuFileSave.Click
 
     End Sub
 End Class
