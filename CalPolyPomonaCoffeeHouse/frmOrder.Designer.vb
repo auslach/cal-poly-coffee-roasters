@@ -53,6 +53,8 @@ Partial Class frmOrder
         Me.dtpDateTime = New System.Windows.Forms.DateTimePicker()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.btnGetOrder = New System.Windows.Forms.Button()
         Me.grpOrderSummary.SuspendLayout()
         Me.panOrderSummary.SuspendLayout()
         CType(Me.nudQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -282,7 +284,7 @@ Partial Class frmOrder
         '
         'btnTotal
         '
-        Me.btnTotal.Location = New System.Drawing.Point(433, 338)
+        Me.btnTotal.Location = New System.Drawing.Point(433, 377)
         Me.btnTotal.Name = "btnTotal"
         Me.btnTotal.Size = New System.Drawing.Size(75, 23)
         Me.btnTotal.TabIndex = 11
@@ -291,7 +293,7 @@ Partial Class frmOrder
         '
         'btnNewOrder
         '
-        Me.btnNewOrder.Location = New System.Drawing.Point(433, 367)
+        Me.btnNewOrder.Location = New System.Drawing.Point(451, 16)
         Me.btnNewOrder.Name = "btnNewOrder"
         Me.btnNewOrder.Size = New System.Drawing.Size(75, 23)
         Me.btnNewOrder.TabIndex = 12
@@ -300,7 +302,7 @@ Partial Class frmOrder
         '
         'btnClose
         '
-        Me.btnClose.Location = New System.Drawing.Point(433, 396)
+        Me.btnClose.Location = New System.Drawing.Point(433, 408)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 23)
         Me.btnClose.TabIndex = 13
@@ -335,11 +337,31 @@ Partial Class frmOrder
         Me.PictureBox1.TabIndex = 15
         Me.PictureBox1.TabStop = False
         '
+        'btnSave
+        '
+        Me.btnSave.Location = New System.Drawing.Point(433, 318)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(75, 53)
+        Me.btnSave.TabIndex = 16
+        Me.btnSave.Text = "&Save"
+        Me.btnSave.UseVisualStyleBackColor = True
+        '
+        'btnGetOrder
+        '
+        Me.btnGetOrder.Location = New System.Drawing.Point(370, 16)
+        Me.btnGetOrder.Name = "btnGetOrder"
+        Me.btnGetOrder.Size = New System.Drawing.Size(75, 23)
+        Me.btnGetOrder.TabIndex = 17
+        Me.btnGetOrder.Text = "&Get Order"
+        Me.btnGetOrder.UseVisualStyleBackColor = True
+        '
         'frmOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(619, 445)
+        Me.Controls.Add(Me.btnGetOrder)
+        Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.dtpDateTime)
@@ -398,4 +420,6 @@ Partial Class frmOrder
     Friend WithEvents btnAdd As System.Windows.Forms.Button
     Friend WithEvents panOrderSummary As System.Windows.Forms.Panel
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents btnSave As System.Windows.Forms.Button
+    Friend WithEvents btnGetOrder As System.Windows.Forms.Button
 End Class

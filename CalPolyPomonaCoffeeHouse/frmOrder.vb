@@ -71,14 +71,16 @@ Public Class frmOrder
 
     Private Sub cboItem_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboItem.SelectedIndexChanged
         ' Set the price when an Item is chosen from the combo box
-        'txtPrice.Text = coffeeMenu.Item(sender.Text)
-        txtPrice.Text = coffeeMenu.GetPrice(sender.Text)
-        ' set quantity to default val of 1 if empty
-        If nudQuantity.Value < 1 Then
-            nudQuantity.Value = 1
+        If cboItem.SelectedIndex <> -1 Then
+            Dim price As Double = coffeeMenu.GetPrice(sender.Text)
+            txtPrice.Text = Format(price, "0.00")
+            ' set quantity to default val of 1 if empty
+            If nudQuantity.Value < 1 Then
+                nudQuantity.Value = 1
+            End If
+            Dim total As Double = txtPrice.Text * nudQuantity.Value
+            txtTotal.Text = Format(total, "0.00")
         End If
-        Dim total As Double = txtPrice.Text * nudQuantity.Value
-        txtTotal.Text = Format(total, "0.00")
     End Sub
 
     Private Sub cboItem_SelectedIndexChanged1(sender As Object, e As EventArgs)
@@ -86,7 +88,8 @@ Public Class frmOrder
         'index = index - 1
         Console.WriteLine("Combo box changed, index: " & index)
         Console.WriteLine("Combo box changed, index price: " & coffeeMenu.GetPrice(sender.Text))
-        txtPLines(index).Text = coffeeMenu.GetPrice(sender.Text)
+        Dim price As Double = coffeeMenu.GetPrice(sender.Text)
+        txtPLines(index).Text = Format(price, "0.00")
         If nudQLines(index).Value < 1 Then
             nudQLines(index).Value = 1
         End If
@@ -253,17 +256,11 @@ Public Class frmOrder
                     ' calculate order total if validation passes
                     If validated = True Then
                         Console.WriteLine("All validations passed! Calculating total")
-                        'calculateOrderTotal()
 
                         myOrder = New Order()
                         myOrder.ID = txtOrderNumber.Text
                         myOrder.server = txtServer.Text
                         myOrder.orderDate = dtpDateTime.Text
-
-                        ' declare variables
-                        'Dim foodTotal As Double = 0
-                        'Dim salesTax As Double = 0
-                        'Dim orderTotal As Double = 0
 
                         ' loop through lines, record name, price, qty
                         For n As Integer = 0 To cboLines.Count - 1
@@ -275,9 +272,9 @@ Public Class frmOrder
                             myOrder.addLine(orderLine)
                         Next
 
-                        'txtFoodTotal.Text = FormatCurrency(foodTotal, 2)
-                        'txtSalesTax.Text = FormatCurrency(salesTax, 2)
-                        'txtOrderTotal.Text = FormatCurrency(orderTotal, 2)
+                        txtFoodTotal.Text = FormatCurrency(myOrder.total, 2)
+                        txtSalesTax.Text = FormatCurrency(myOrder.tax, 2)
+                        txtOrderTotal.Text = FormatCurrency(myOrder.grandTotal, 2)
                     End If
                 End If
             End If
@@ -297,7 +294,7 @@ Public Class frmOrder
         txtOrderTotal.Clear()
 
         ' clear the first line of order summary
-        cboItem.Text = ""
+        cboItem.SelectedIndex = -1
         nudQuantity.Value = 0
         txtPrice.Clear()
         txtTotal.Clear()
@@ -338,4 +335,40 @@ Public Class frmOrder
         Me.Close()
     End Sub
 
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        btnTotal.PerformClick()
+        Dim message As String
+        message = ctrl.addOrder(myOrder)
+        If message <> "" Then
+            Dim result As Integer = MessageBox.Show(message, "Coffee Order", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2)
+            If result = vbYes Then
+                ctrl.addOrder(myOrder, True)
+            End If
+        End If
+    End Sub
+
+    Public Sub clickBtnSave()
+        btnSave.PerformClick()
+    End Sub
+
+    Private Sub btnGetOrder_Click(sender As Object, e As EventArgs) Handles btnGetOrder.Click
+
+        If isPresent(txtOrderNumber.Text, "Order Number") AndAlso isInteger(txtOrderNumber.Text, "Order Number") AndAlso ctrl.orderExists(txtOrderNumber.Text, "Order Number") Then
+            myOrder = ctrl.getOrder(txtOrderNumber.Text)
+
+            txtOrderNumber.Text = myOrder.ID
+            txtServer.Text = myOrder.server
+            dtpDateTime.Text = myOrder.orderDate
+
+            txtFoodTotal.Text = FormatCurrency(myOrder.total, 2)
+            txtSalesTax.Text = FormatCurrency(myOrder.tax, 2)
+            txtOrderTotal.Text = FormatCurrency(myOrder.grandTotal, 2)
+        End If
+
+
+        ' loop through each order line
+        ' add a new line for each order line
+        ' fill out values for each order line
+
+    End Sub
 End Class

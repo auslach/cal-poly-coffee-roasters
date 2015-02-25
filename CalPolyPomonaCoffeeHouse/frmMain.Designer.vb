@@ -25,6 +25,7 @@ Partial Class frmMain
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
         Me.mnuFile = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuFileNew = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuFileClose = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuFileExit = New System.Windows.Forms.ToolStripMenuItem()
@@ -37,6 +38,9 @@ Partial Class frmMain
         Me.mnuWindowTileVertical = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuWindowTileHorizontal = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuWindowArrangeIcons = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OrderFormToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OrderSummaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -53,7 +57,7 @@ Partial Class frmMain
         '
         'mnuFile
         '
-        Me.mnuFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuFileNew, Me.mnuFileClose, Me.ToolStripSeparator1, Me.mnuFileExit})
+        Me.mnuFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuFileNew, Me.OpenToolStripMenuItem, Me.SaveToolStripMenuItem, Me.mnuFileClose, Me.ToolStripSeparator1, Me.mnuFileExit})
         Me.mnuFile.Name = "mnuFile"
         Me.mnuFile.Size = New System.Drawing.Size(37, 20)
         Me.mnuFile.Text = "&File"
@@ -62,24 +66,31 @@ Partial Class frmMain
         '
         Me.mnuFileNew.Name = "mnuFileNew"
         Me.mnuFileNew.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
-        Me.mnuFileNew.Size = New System.Drawing.Size(141, 22)
+        Me.mnuFileNew.Size = New System.Drawing.Size(152, 22)
         Me.mnuFileNew.Text = "New"
+        '
+        'OpenToolStripMenuItem
+        '
+        Me.OpenToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OrderFormToolStripMenuItem, Me.OrderSummaryToolStripMenuItem})
+        Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.OpenToolStripMenuItem.Text = "Open"
         '
         'mnuFileClose
         '
         Me.mnuFileClose.Name = "mnuFileClose"
-        Me.mnuFileClose.Size = New System.Drawing.Size(141, 22)
+        Me.mnuFileClose.Size = New System.Drawing.Size(152, 22)
         Me.mnuFileClose.Text = "Close"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(138, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
         '
         'mnuFileExit
         '
         Me.mnuFileExit.Name = "mnuFileExit"
-        Me.mnuFileExit.Size = New System.Drawing.Size(141, 22)
+        Me.mnuFileExit.Size = New System.Drawing.Size(152, 22)
         Me.mnuFileExit.Text = "Exit"
         '
         'mnuEdit
@@ -120,26 +131,45 @@ Partial Class frmMain
         'mnuWindowCascade
         '
         Me.mnuWindowCascade.Name = "mnuWindowCascade"
-        Me.mnuWindowCascade.Size = New System.Drawing.Size(152, 22)
+        Me.mnuWindowCascade.Size = New System.Drawing.Size(151, 22)
         Me.mnuWindowCascade.Text = "Cascade"
         '
         'mnuWindowTileVertical
         '
         Me.mnuWindowTileVertical.Name = "mnuWindowTileVertical"
-        Me.mnuWindowTileVertical.Size = New System.Drawing.Size(152, 22)
+        Me.mnuWindowTileVertical.Size = New System.Drawing.Size(151, 22)
         Me.mnuWindowTileVertical.Text = "Tile Vertical"
         '
         'mnuWindowTileHorizontal
         '
         Me.mnuWindowTileHorizontal.Name = "mnuWindowTileHorizontal"
-        Me.mnuWindowTileHorizontal.Size = New System.Drawing.Size(152, 22)
+        Me.mnuWindowTileHorizontal.Size = New System.Drawing.Size(151, 22)
         Me.mnuWindowTileHorizontal.Text = "Tile Horizontal"
         '
         'mnuWindowArrangeIcons
         '
         Me.mnuWindowArrangeIcons.Name = "mnuWindowArrangeIcons"
-        Me.mnuWindowArrangeIcons.Size = New System.Drawing.Size(152, 22)
+        Me.mnuWindowArrangeIcons.Size = New System.Drawing.Size(151, 22)
         Me.mnuWindowArrangeIcons.Text = "Arrange Icons"
+        '
+        'OrderFormToolStripMenuItem
+        '
+        Me.OrderFormToolStripMenuItem.Name = "OrderFormToolStripMenuItem"
+        Me.OrderFormToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
+        Me.OrderFormToolStripMenuItem.Text = "Order Form"
+        '
+        'OrderSummaryToolStripMenuItem
+        '
+        Me.OrderSummaryToolStripMenuItem.Name = "OrderSummaryToolStripMenuItem"
+        Me.OrderSummaryToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
+        Me.OrderSummaryToolStripMenuItem.Text = "Order Summary"
+        '
+        'SaveToolStripMenuItem
+        '
+        Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
+        Me.SaveToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SaveToolStripMenuItem.Text = "Save"
         '
         'frmMain
         '
@@ -172,5 +202,9 @@ Partial Class frmMain
     Friend WithEvents mnuWindowTileHorizontal As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuWindowArrangeIcons As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents OpenToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents OrderFormToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents OrderSummaryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SaveToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

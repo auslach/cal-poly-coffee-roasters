@@ -113,4 +113,17 @@ Public Class frmMain
         CheckEditMenu()
     End Sub
 
+    Private Sub OrderSummaryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OrderSummaryToolStripMenuItem.Click
+        frmOrderSummary.MdiParent = Me
+        frmOrderSummary.Text = "Order Summary"
+        frmOrderSummary.Show()
+    End Sub
+
+    Private Sub OrderFormToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OrderFormToolStripMenuItem.Click
+        mnuFileNew.PerformClick()
+    End Sub
+
+    Private Sub SaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveToolStripMenuItem.Click
+
+    End Sub
 End Class

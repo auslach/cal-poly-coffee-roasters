@@ -21,7 +21,7 @@
         Return menu
     End Function
 
-    Public Function GetOrder(ByVal ID As String) As Order
+    Public Function getOrder(ByVal ID As String) As Order
         Return OrderCollection.Item(ID)
     End Function
 
@@ -34,6 +34,24 @@
             msg += "Duplicate order found. Replace?"
         End If
         Return result
+    End Function
+
+    ' validation for existence of order
+    Public Function orderExists(ByVal myOrderID As String, ByVal title As String) As Boolean
+        Dim result As Boolean = False
+        Try
+            Dim myOrder As Order
+            myOrder = getOrder(myOrderID)
+            If OrderCollection.Contains(myOrder.ID) Then
+                result = True
+            End If
+        Catch ex As Exception
+            MessageBox.Show(title & " must be an order that exists.", title)
+            result = False
+        End Try
+
+        Return result
+
     End Function
 
 End Class
