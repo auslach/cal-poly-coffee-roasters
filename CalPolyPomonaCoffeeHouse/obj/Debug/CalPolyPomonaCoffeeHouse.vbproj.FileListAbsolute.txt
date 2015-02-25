@@ -9,3 +9,7 @@ C:\Users\austin\Documents\Visual Studio 2012\Projects\CalPolyPomonaCoffeeHouse\C
 C:\Users\austin\Documents\Visual Studio 2012\Projects\CalPolyPomonaCoffeeHouse\CalPolyPomonaCoffeeHouse\obj\Debug\CalPolyPomonaCoffeeHouse.exe
 C:\Users\austin\Documents\Visual Studio 2012\Projects\CalPolyPomonaCoffeeHouse\CalPolyPomonaCoffeeHouse\obj\Debug\CalPolyPomonaCoffeeHouse.xml
 C:\Users\austin\Documents\Visual Studio 2012\Projects\CalPolyPomonaCoffeeHouse\CalPolyPomonaCoffeeHouse\obj\Debug\CalPolyPomonaCoffeeHouse.pdb
+C:\Users\austin\Documents\Visual Studio 2012\Projects\CalPolyPomonaCoffeeHouse2\CalPolyPomonaCoffeeHouse\bin\Debug\CalPolyPomonaCoffeeHouse.exe.config
+C:\Users\austin\Documents\Visual Studio 2012\Projects\CalPolyPomonaCoffeeHouse2\CalPolyPomonaCoffeeHouse\obj\Debug\CalPolyPomonaCoffeeHouse.exe
+C:\Users\austin\Documents\Visual Studio 2012\Projects\CalPolyPomonaCoffeeHouse2\CalPolyPomonaCoffeeHouse\obj\Debug\CalPolyPomonaCoffeeHouse.xml
+C:\Users\austin\Documents\Visual Studio 2012\Projects\CalPolyPomonaCoffeeHouse2\CalPolyPomonaCoffeeHouse\obj\Debug\CalPolyPomonaCoffeeHouse.pdb

@@ -1,4 +1,9 @@
-﻿Public Class frmMain
+﻿Imports System.Windows.Forms
+Imports CalPolyPomonaCoffeeHouseBM
+
+Public Class frmMain
+
+    Public ctrl As New Controller
 
     Private m_ChildFormNumber As Integer = 0
 

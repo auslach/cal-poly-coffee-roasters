@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CalPolyPomonaCoffeeHouse", "CalPolyPomonaCoffeeHouse\CalPolyPomonaCoffeeHouse.vbproj", "{3FFE1C94-34D1-412A-AA2A-68C005FA3E5F}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CalPolyPomonaCoffeeHouseUI", "CalPolyPomonaCoffeeHouse\CalPolyPomonaCoffeeHouseUI.vbproj", "{3FFE1C94-34D1-412A-AA2A-68C005FA3E5F}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CalPolyPomonaCoffeeHouseBM", "CalPolyPomonaCoffeeHouseBM\CalPolyPomonaCoffeeHouseBM.vbproj", "{59831AF5-29BC-4EC1-AB04-96A74E1DBB5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{3FFE1C94-34D1-412A-AA2A-68C005FA3E5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FFE1C94-34D1-412A-AA2A-68C005FA3E5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FFE1C94-34D1-412A-AA2A-68C005FA3E5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59831AF5-29BC-4EC1-AB04-96A74E1DBB5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59831AF5-29BC-4EC1-AB04-96A74E1DBB5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59831AF5-29BC-4EC1-AB04-96A74E1DBB5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59831AF5-29BC-4EC1-AB04-96A74E1DBB5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

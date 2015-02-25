@@ -1,7 +1,12 @@
-﻿Public Class frmOrder
+﻿Imports CalPolyPomonaCoffeeHouseBM
 
-    Public Const taxPercent = 0.0775
-    Private coffeeMenu As New Dictionary(Of String, String)
+Public Class frmOrder
+
+    Private ctrl As New Controller
+    Public coffeeMenu As New Menu
+
+    'Public Const taxPercent = 0.0775
+
     Private cboLines As New ArrayList
     Private txtPLines As New ArrayList
     Private nudQLines As New ArrayList
@@ -9,27 +14,15 @@
     Private orderSummaryLines() As Object = {cboLines, txtPLines, nudQLines, txtTLines}
 
     Private Sub frmOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' add coffees and prices to collection
-        coffeeMenu.Add("Antigua", "5.95")
-        coffeeMenu.Add("Apanas", "11.95")
-        coffeeMenu.Add("Bantu", "9.92")
-        coffeeMenu.Add("Colombia", "11.52")
-        coffeeMenu.Add("Costa Rica", "13.60")
-        coffeeMenu.Add("Ethiopia", "9.51")
-        coffeeMenu.Add("French Roast", "10.72")
-        coffeeMenu.Add("Huehuetenango", "10.95")
-        coffeeMenu.Add("Kenya", "13.60")
-        coffeeMenu.Add("Mexico", "11.52")
-        coffeeMenu.Add("Morning Ed.", "9.92")
-        coffeeMenu.Add("Nepenthe", "11.52")
-        coffeeMenu.Add("Sumatra", "9.92")
-        coffeeMenu.Add("Yemen", "8.96")
-        coffeeMenu.Add("Yemen Mocha", "18.52")
-        coffeeMenu.Add("Zimbabwe", "11.52")
 
+        ' Controller and Menu vars
+        ctrl = CType(MdiParent, frmMain).ctrl
+        coffeeMenu = ctrl.getMenu()
+
+        Dim coffees As Dictionary(Of String, String) = coffeeMenu.getItems()
         Dim positionFromTop As Integer = 0
         Dim grpMenuLines As New ArrayList
-        For Each coffee As Object In coffeeMenu
+        For Each coffee As Object In coffees
             ' Display all coffee flavors in the menu panel
             Dim mnuItemName As New Label
             Dim mnuItemPrice As New Label
@@ -78,7 +71,8 @@
 
     Private Sub cboItem_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboItem.SelectedIndexChanged
         ' Set the price when an Item is chosen from the combo box
-        txtPrice.Text = coffeeMenu.Item(sender.Text)
+        'txtPrice.Text = coffeeMenu.Item(sender.Text)
+        txtPrice.Text = coffeeMenu.GetPrice(sender.Text)
         ' set quantity to default val of 1 if empty
         If nudQuantity.Value < 1 Then
             nudQuantity.Value = 1
@@ -91,8 +85,8 @@
         Dim index = CType(sender, ComboBox).Tag
         'index = index - 1
         Console.WriteLine("Combo box changed, index: " & index)
-        Console.WriteLine("Combo box changed, index price: " & coffeeMenu.Item(sender.Text))
-        txtPLines(index).Text = coffeeMenu.Item(sender.Text)
+        Console.WriteLine("Combo box changed, index price: " & coffeeMenu.GetPrice(sender.Text))
+        txtPLines(index).Text = coffeeMenu.GetPrice(sender.Text)
         If nudQLines(index).Value < 1 Then
             nudQLines(index).Value = 1
         End If
@@ -176,7 +170,8 @@
         nudQLines.Add(nudQ)
         txtTLines.Add(txtT)
         ' add each coffee flavor to the combo box
-        For Each coffee As Object In coffeeMenu
+        Dim coffees As Dictionary(Of String, String) = coffeeMenu.getItems()
+        For Each coffee As Object In coffees
             cbo.Items.Add(coffee.key)
         Next
 
@@ -228,7 +223,7 @@
         Next
 
         ' calculate sales tax
-        salesTax = foodTotal * taxPercent
+        ' salesTax = foodTotal * taxPercent
         ' calculate order total
         orderTotal = foodTotal + salesTax
 
@@ -236,6 +231,8 @@
         txtSalesTax.Text = FormatCurrency(salesTax, 2)
         txtOrderTotal.Text = FormatCurrency(orderTotal, 2)
     End Sub
+
+    Private myOrder As Order
 
     Private Sub btnTotal_Click(sender As Object, e As EventArgs) Handles btnTotal.Click
         ' validations
@@ -256,7 +253,31 @@
                     ' calculate order total if validation passes
                     If validated = True Then
                         Console.WriteLine("All validations passed! Calculating total")
-                        calculateOrderTotal()
+                        'calculateOrderTotal()
+
+                        myOrder = New Order()
+                        myOrder.ID = txtOrderNumber.Text
+                        myOrder.server = txtServer.Text
+                        myOrder.orderDate = dtpDateTime.Text
+
+                        ' declare variables
+                        'Dim foodTotal As Double = 0
+                        'Dim salesTax As Double = 0
+                        'Dim orderTotal As Double = 0
+
+                        ' loop through lines, record name, price, qty
+                        For n As Integer = 0 To cboLines.Count - 1
+                            Dim orderLine As New OrderLine()
+                            orderLine.name = cboLines(n).Text
+                            orderLine.price = txtPLines(n).Text
+                            orderLine.qty = nudQLines(n).Value
+                            ' add order line to order object
+                            myOrder.addLine(orderLine)
+                        Next
+
+                        'txtFoodTotal.Text = FormatCurrency(foodTotal, 2)
+                        'txtSalesTax.Text = FormatCurrency(salesTax, 2)
+                        'txtOrderTotal.Text = FormatCurrency(orderTotal, 2)
                     End If
                 End If
             End If

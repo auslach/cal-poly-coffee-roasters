@@ -326,7 +326,7 @@ Partial Class frmOrder
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.CalPolyPomonaCoffeeHouse.My.Resources.Resources.coffeecup_Ballistik_Coffee_Boy_crop380w
+        Me.PictureBox1.Image = Global.CalPolyPomonaCoffeeHouseUI.My.Resources.Resources.coffeecup_Ballistik_Coffee_Boy_crop380w
         Me.PictureBox1.InitialImage = CType(resources.GetObject("PictureBox1.InitialImage"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(514, 338)
         Me.PictureBox1.Name = "PictureBox1"
