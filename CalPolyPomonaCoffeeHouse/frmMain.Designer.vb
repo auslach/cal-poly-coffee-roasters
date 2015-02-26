@@ -27,8 +27,9 @@ Partial Class frmMain
         Me.mnuFileNew = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OrderFormToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OrderSummaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuOpenOrderSummary = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuFileSave = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuFileDelete = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuFileClose = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuFileExit = New System.Windows.Forms.ToolStripMenuItem()
@@ -41,7 +42,6 @@ Partial Class frmMain
         Me.mnuWindowTileVertical = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuWindowTileHorizontal = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuWindowArrangeIcons = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuFileDelete = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -72,7 +72,7 @@ Partial Class frmMain
         '
         'OpenToolStripMenuItem
         '
-        Me.OpenToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OrderFormToolStripMenuItem, Me.OrderSummaryToolStripMenuItem})
+        Me.OpenToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OrderFormToolStripMenuItem, Me.mnuOpenOrderSummary})
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
         Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.OpenToolStripMenuItem.Text = "Open"
@@ -83,11 +83,11 @@ Partial Class frmMain
         Me.OrderFormToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
         Me.OrderFormToolStripMenuItem.Text = "Order Form"
         '
-        'OrderSummaryToolStripMenuItem
+        'mnuOpenOrderSummary
         '
-        Me.OrderSummaryToolStripMenuItem.Name = "OrderSummaryToolStripMenuItem"
-        Me.OrderSummaryToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
-        Me.OrderSummaryToolStripMenuItem.Text = "Order Summary"
+        Me.mnuOpenOrderSummary.Name = "mnuOpenOrderSummary"
+        Me.mnuOpenOrderSummary.Size = New System.Drawing.Size(158, 22)
+        Me.mnuOpenOrderSummary.Text = "Order Summary"
         '
         'mnuFileSave
         '
@@ -95,6 +95,12 @@ Partial Class frmMain
         Me.mnuFileSave.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
         Me.mnuFileSave.Size = New System.Drawing.Size(152, 22)
         Me.mnuFileSave.Text = "Save"
+        '
+        'mnuFileDelete
+        '
+        Me.mnuFileDelete.Name = "mnuFileDelete"
+        Me.mnuFileDelete.Size = New System.Drawing.Size(152, 22)
+        Me.mnuFileDelete.Text = "Delete"
         '
         'mnuFileClose
         '
@@ -172,12 +178,6 @@ Partial Class frmMain
         Me.mnuWindowArrangeIcons.Size = New System.Drawing.Size(151, 22)
         Me.mnuWindowArrangeIcons.Text = "Arrange Icons"
         '
-        'mnuFileDelete
-        '
-        Me.mnuFileDelete.Name = "mnuFileDelete"
-        Me.mnuFileDelete.Size = New System.Drawing.Size(152, 22)
-        Me.mnuFileDelete.Text = "Delete"
-        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -211,7 +211,7 @@ Partial Class frmMain
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents OpenToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OrderFormToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents OrderSummaryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuOpenOrderSummary As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuFileSave As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuFileDelete As System.Windows.Forms.ToolStripMenuItem
 

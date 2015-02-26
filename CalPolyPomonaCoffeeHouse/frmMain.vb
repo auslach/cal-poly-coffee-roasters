@@ -121,7 +121,7 @@ Public Class frmMain
         CheckEditMenu()
     End Sub
 
-    Private Sub OrderSummaryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OrderSummaryToolStripMenuItem.Click
+    Private Sub mnuOpenOrderSummary_Click(sender As Object, e As EventArgs) Handles mnuOpenOrderSummary.Click
         frmOrderSummary.MdiParent = Me
         frmOrderSummary.Text = "Order Summary"
         frmOrderSummary.Show()
@@ -132,6 +132,24 @@ Public Class frmMain
     End Sub
 
     Private Sub mnuFileSave_Click(sender As Object, e As EventArgs) Handles mnuFileSave.Click
-
+        Dim frm As frmOrder = Me.ActiveMdiChild
+        frm.saveOrder()
     End Sub
+
+    Private Sub mnuFileDelete_Click(sender As Object, e As EventArgs) Handles mnuFileDelete.Click
+        Dim frm As frmOrder = Me.ActiveMdiChild
+        frm.deleteOrder()
+        frm.Close()
+        frmOrderSummary.btnReload.PerformClick()
+    End Sub
+
+    Public Sub openOrder(ByVal ID As String)
+        Dim frm As New frmOrder
+        frm.MdiParent = Me
+        frm.Show()
+        frm.Text = "Order #" & ID
+        frm.txtOrderNumber.Text = ID
+        frm.btnGetOrder.PerformClick()
+    End Sub
+
 End Class

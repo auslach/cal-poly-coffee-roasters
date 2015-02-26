@@ -5,8 +5,6 @@ Public Class frmOrder
     Private ctrl As New Controller
     Public coffeeMenu As New Menu
 
-    'Public Const taxPercent = 0.0775
-
     Private cboLines As New ArrayList
     Private txtPLines As New ArrayList
     Private nudQLines As New ArrayList
@@ -283,17 +281,9 @@ Public Class frmOrder
             Next
         Next
 
-        For Each line As Object In cboLines
-            Console.WriteLine(line)
-        Next
-
         ' remove summary item from array
         For Each line As Object In orderSummaryLines
             line.Clear()
-        Next
-
-        For Each line As Object In nudQLines
-            Console.WriteLine(line)
         Next
 
         ' re-add first line of orders to order summary list
@@ -317,6 +307,17 @@ Public Class frmOrder
             If result = vbYes Then
                 ctrl.addOrder(myOrder, True)
             End If
+        End If
+    End Sub
+
+    Public Sub saveOrder()
+        btnSave.PerformClick()
+    End Sub
+
+    Public Sub deleteOrder()
+        If ctrl.isPresent(txtOrderNumber.Text, "Order Number") AndAlso ctrl.isInteger(txtOrderNumber.Text, "Order Number") AndAlso ctrl.orderExists(txtOrderNumber.Text, "Order Number") Then
+            myOrder = ctrl.getOrder(txtOrderNumber.Text)
+            ctrl.removeOrder(myOrder)
         End If
     End Sub
 
