@@ -4,11 +4,11 @@
     Private m_OrderLines As New ArrayList
     Private Const taxPercent = 0.0775
 
-    Public Sub addLine(ByVal line As OrderLine)
+    Public Sub addLine(ByVal line As OrderDetail)
         m_OrderLines.Add(line)
     End Sub
 
-    Public Function getLine(ByVal index As Integer) As OrderLine
+    Public Function getLine(ByVal index As Integer) As OrderDetail
         Return m_OrderLines(index)
     End Function
 

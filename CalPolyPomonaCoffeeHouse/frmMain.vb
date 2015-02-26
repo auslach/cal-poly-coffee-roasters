@@ -137,10 +137,14 @@ Public Class frmMain
     End Sub
 
     Private Sub mnuFileDelete_Click(sender As Object, e As EventArgs) Handles mnuFileDelete.Click
+        ' find and delete order
         Dim frm As frmOrder = Me.ActiveMdiChild
         frm.deleteOrder()
-        frm.Close()
+        ' reload order summary page
         frmOrderSummary.btnReload.PerformClick()
+        ' clear form
+        frm.btnNewOrder.PerformClick()
+        frm.Focus()
     End Sub
 
     Public Sub openOrder(ByVal ID As String)

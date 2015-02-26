@@ -1,4 +1,4 @@
-﻿Public Class OrderLine
+﻿Public Class OrderDetail
 
     Private m_Name As String
     Private m_Qty, m_Price As Double

@@ -9,6 +9,9 @@ Public Class frmOrder
     Private txtPLines As New ArrayList
     Private nudQLines As New ArrayList
     Private txtTLines As New ArrayList
+
+    Private myOrder As Order
+
     Private orderSummaryLines() As Object = {cboLines, txtPLines, nudQLines, txtTLines}
 
     Private Sub frmOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -118,7 +121,6 @@ Public Class frmOrder
         End If
     End Sub
 
-
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         Dim positionFromTop As Integer = 0
 
@@ -181,34 +183,6 @@ Public Class frmOrder
         AddHandler nudQ.ValueChanged, AddressOf nudQuantity_ValueChanged1
     End Sub
 
-
-
-    Private Sub calculateOrderTotal()
-        ' declare variables
-        Dim foodTotal As Double = 0
-        Dim salesTax As Double = 0
-        Dim orderTotal As Double = 0
-
-        ' loop through each line, total up costs
-        For Each total As Object In txtTLines
-            Dim amount As Double = 0
-            ' convert total to double
-            Double.TryParse(total.Text, amount)
-            foodTotal += amount
-        Next
-
-        ' calculate sales tax
-        ' salesTax = foodTotal * taxPercent
-        ' calculate order total
-        orderTotal = foodTotal + salesTax
-
-        txtFoodTotal.Text = FormatCurrency(foodTotal, 2)
-        txtSalesTax.Text = FormatCurrency(salesTax, 2)
-        txtOrderTotal.Text = FormatCurrency(orderTotal, 2)
-    End Sub
-
-    Private myOrder As Order
-
     Private Sub btnTotal_Click(sender As Object, e As EventArgs) Handles btnTotal.Click
         ' validations
         Dim validated As Boolean = False
@@ -236,7 +210,7 @@ Public Class frmOrder
 
                         ' loop through lines, record name, price, qty
                         For n As Integer = 0 To cboLines.Count - 1
-                            Dim orderLine As New OrderLine()
+                            Dim orderLine As New OrderDetail()
                             orderLine.name = cboLines(n).Text
                             orderLine.price = txtPLines(n).Text
                             orderLine.qty = nudQLines(n).Value

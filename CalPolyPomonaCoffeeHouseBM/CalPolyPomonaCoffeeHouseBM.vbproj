@@ -90,7 +90,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Order.vb" />
-    <Compile Include="OrderLine.vb" />
+    <Compile Include="OrderDetail.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
