@@ -133,7 +133,7 @@ Public Class frmMain
 
     Private Sub mnuFileSave_Click(sender As Object, e As EventArgs) Handles mnuFileSave.Click
         Dim frm As frmOrder = Me.ActiveMdiChild
-        frm.saveOrder()
+        frm.btnSave.PerformClick()
     End Sub
 
     Private Sub mnuFileDelete_Click(sender As Object, e As EventArgs) Handles mnuFileDelete.Click
@@ -154,6 +154,19 @@ Public Class frmMain
         frm.Text = "Order #" & ID
         frm.txtOrderNumber.Text = ID
         frm.btnGetOrder.PerformClick()
+    End Sub
+
+    Private Sub frmMain_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+
+        'display message on form closing
+        Dim Result As DialogResult
+        Result = MessageBox.Show("Do you wish to close this application?", "Close Application?", MessageBoxButtons.YesNoCancel)
+
+        'if user clicked no, cancel form closing
+        If Result = System.Windows.Forms.DialogResult.No Or Result = System.Windows.Forms.DialogResult.Cancel Then
+            e.Cancel = True
+        End If
+
     End Sub
 
 End Class

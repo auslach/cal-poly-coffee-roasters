@@ -184,6 +184,10 @@ Public Class frmOrder
     End Sub
 
     Private Sub btnTotal_Click(sender As Object, e As EventArgs) Handles btnTotal.Click
+        validateOrder()
+    End Sub
+
+    Private Function validateOrder()
         ' validations
         Dim validated As Boolean = False
         If ctrl.isPresent(txtOrderNumber.Text, "Order Number") AndAlso ctrl.isInteger(txtOrderNumber.Text, "Order Number") Then
@@ -196,7 +200,6 @@ Public Class frmOrder
                             validated = True
                         Else
                             validated = False
-                            Return
                         End If
                     Next
                     ' calculate order total if validation passes
@@ -225,7 +228,8 @@ Public Class frmOrder
                 End If
             End If
         End If
-    End Sub
+        Return validated
+    End Function
 
     Private Sub btnNewOrder_Click(sender As Object, e As EventArgs) Handles btnNewOrder.Click
         ' clear the form
@@ -273,19 +277,31 @@ Public Class frmOrder
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        btnTotal.PerformClick()
-        Dim message As String
-        message = ctrl.addOrder(myOrder)
-        If message <> "" Then
-            Dim result As Integer = MessageBox.Show(message, "Coffee Order", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2)
-            If result = vbYes Then
-                ctrl.addOrder(myOrder, True)
-            End If
-        End If
+        saveOrder()
     End Sub
 
     Public Sub saveOrder()
-        btnSave.PerformClick()
+        ' if user clicks no or cancel, don't save
+        Dim saveResult As DialogResult
+        saveResult = MessageBox.Show("Save this order?", "Order Save", MessageBoxButtons.YesNoCancel)
+
+        If saveResult = System.Windows.Forms.DialogResult.Yes Then
+            Console.WriteLine("Saving order")
+
+            ' calculate total
+            If validateOrder() = True Then
+                Dim message As String
+                message = ctrl.addOrder(myOrder)
+                If message <> "" Then
+                    Dim result As Integer = MessageBox.Show(message, "Coffee Order", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2)
+                    If result = vbYes Then
+                        ' save order
+                        ctrl.addOrder(myOrder, True)
+                    End If
+                End If
+            End If
+        End If
+        
     End Sub
 
     Public Sub deleteOrder()
@@ -327,4 +343,18 @@ Public Class frmOrder
 
         End If
     End Sub
+
+    Private Sub frmOrder_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+
+        'display message on form closing
+        Dim Result As DialogResult
+        Result = MessageBox.Show("Do you wish to close this order?", "Close Order?", MessageBoxButtons.YesNoCancel)
+
+        'if user clicked no, cancel form closing
+        If Result = System.Windows.Forms.DialogResult.No Or Result = System.Windows.Forms.DialogResult.Cancel Then
+            e.Cancel = True
+        End If
+
+    End Sub
+
 End Class
