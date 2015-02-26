@@ -36,6 +36,10 @@ Public Class frmOrder
             mnuItemPrice.AutoSize = True
             mnuItemPrice.TextAlign = ContentAlignment.TopRight
             mnuItemPrice.Left = 130
+            mnuItemPrice.AutoSize = False
+            mnuItemPrice.Width = 50
+            mnuItemPrice.Height = 15
+
             mnuItemPrice.Text = "$ " & coffee.value
             mnuItemPrice.Top = positionFromTop
 

@@ -156,17 +156,5 @@ Public Class frmMain
         frm.btnGetOrder.PerformClick()
     End Sub
 
-    Private Sub frmMain_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-
-        'display message on form closing
-        Dim Result As DialogResult
-        Result = MessageBox.Show("Do you wish to close this application?", "Close Application?", MessageBoxButtons.YesNoCancel)
-
-        'if user clicked no, cancel form closing
-        If Result = System.Windows.Forms.DialogResult.No Or Result = System.Windows.Forms.DialogResult.Cancel Then
-            e.Cancel = True
-        End If
-
-    End Sub
 
 End Class
