@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3FFE1C94-34D1-412A-AA2A-68C005FA3E5F}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <StartupObject>CalPolyPomonaCoffeeHouseUI.My.MyApplication</StartupObject>
-    <RootNamespace>CalPolyPomonaCoffeeHouseUI</RootNamespace>
-    <AssemblyName>CalPolyPomonaCoffeeHouseUI</AssemblyName>
+    <ProjectGuid>{D226C1F8-599F-4AC8-980A-8DFFB9278DA8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <StartupObject>
+    </StartupObject>
+    <RootNamespace>CalPolyPomonaCoffeeHouseDB</RootNamespace>
+    <AssemblyName>CalPolyPomonaCoffeeHouseDB</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>WindowsForms</MyType>
+    <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -35,7 +36,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>CalPolyPomonaCoffeeHouseUI.xml</DocumentationFile>
+    <DocumentationFile>CalPolyPomonaCoffeeHouseDB.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -45,7 +46,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>CalPolyPomonaCoffeeHouseUI.xml</DocumentationFile>
+    <DocumentationFile>CalPolyPomonaCoffeeHouseDB.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -63,8 +64,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -85,25 +88,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmMain.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMain.Designer.vb">
-      <DependentUpon>frmMain.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmOrder.Designer.vb">
-      <DependentUpon>frmOrder.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmOrder.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmOrderSummary.Designer.vb">
-      <DependentUpon>frmOrderSummary.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmOrderSummary.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="DBController.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -119,17 +104,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="OrdersDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrdersDataSet.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmMain.resx">
-      <DependentUpon>frmMain.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmOrder.resx">
-      <DependentUpon>frmOrder.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmOrderSummary.resx">
-      <DependentUpon>frmOrderSummary.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -148,18 +129,22 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="OrdersDataSet.xsc">
+      <DependentUpon>OrdersDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="OrdersDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OrdersDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="OrdersDataSet.xss">
+      <DependentUpon>OrdersDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\imgCoffee.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\coffeecup_Ballistik_Coffee_Boy_crop380w.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CalPolyPomonaCoffeeHouseBM\CalPolyPomonaCoffeeHouseBM.vbproj">
-      <Project>{59831af5-29bc-4ec1-ab04-96a74e1dbb5f}</Project>
-      <Name>CalPolyPomonaCoffeeHouseBM</Name>
-    </ProjectReference>
+    <Content Include="Orders.sdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -176,6 +161,11 @@
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.4.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 4.0 SP1</ProductName>
+      <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
