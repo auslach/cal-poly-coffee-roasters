@@ -49,9 +49,9 @@ Public Class frmOrderSummary
 
 
             Console.WriteLine("Order ID " & order.ID)
-            Console.WriteLine("Order ID " & order.server)
-            Console.WriteLine("Order ID " & order.orderDate)
-            Console.WriteLine("Order ID " & order.grandTotal)
+            Console.WriteLine("Order server " & order.server)
+            Console.WriteLine("Order date " & order.orderDate)
+            Console.WriteLine("Order grandTotal " & order.grandTotal)
             Console.WriteLine("position from top " & positionFromTop)
             Console.WriteLine("position from left " & lblOrderID.Left)
             Console.WriteLine("width " & lblOrderIDVal.Width)

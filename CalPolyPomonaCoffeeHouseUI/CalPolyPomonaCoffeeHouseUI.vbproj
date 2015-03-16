@@ -156,7 +156,7 @@
     <None Include="Resources\coffeecup_Ballistik_Coffee_Boy_crop380w.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CalPolyCoffeeHouseDB\CalPolyPomonaCoffeeHouseDB.vbproj">
+    <ProjectReference Include="..\CalPolyPomonaCoffeeHouseDB\CalPolyPomonaCoffeeHouseDB.vbproj">
       <Project>{d226c1f8-599f-4ac8-980a-8dffb9278da8}</Project>
       <Name>CalPolyPomonaCoffeeHouseDB</Name>
     </ProjectReference>
