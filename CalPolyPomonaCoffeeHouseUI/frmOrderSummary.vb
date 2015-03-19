@@ -56,6 +56,10 @@ Public Class frmOrderSummary
             Console.WriteLine("position from left " & lblOrderID.Left)
             Console.WriteLine("width " & lblOrderIDVal.Width)
 
+            ' count number of orders and change label
+            Dim countOrders As Integer = orders.Count
+            lblNumberOfOrders.Text = "Number of Orders: " & countOrders
+
             panOrder.Controls.Add(lblOrderIDVal)
             panOrder.Controls.Add(lblServerVal)
             panOrder.Controls.Add(lblDateVal)

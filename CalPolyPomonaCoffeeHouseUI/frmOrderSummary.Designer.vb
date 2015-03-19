@@ -30,6 +30,7 @@ Partial Class frmOrderSummary
         Me.panOrdSumHeader = New System.Windows.Forms.Panel()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.btnReload = New System.Windows.Forms.Button()
+        Me.lblNumberOfOrders = New System.Windows.Forms.Label()
         Me.panSummary.SuspendLayout()
         Me.panOrdSumHeader.SuspendLayout()
         Me.SuspendLayout()
@@ -108,11 +109,21 @@ Partial Class frmOrderSummary
         Me.btnReload.Text = "Reload"
         Me.btnReload.UseVisualStyleBackColor = True
         '
+        'lblNumberOfOrders
+        '
+        Me.lblNumberOfOrders.AutoSize = True
+        Me.lblNumberOfOrders.Location = New System.Drawing.Point(13, 332)
+        Me.lblNumberOfOrders.Name = "lblNumberOfOrders"
+        Me.lblNumberOfOrders.Size = New System.Drawing.Size(100, 13)
+        Me.lblNumberOfOrders.TabIndex = 7
+        Me.lblNumberOfOrders.Text = "Number of orders: 0"
+        '
         'frmOrderSummary
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(507, 358)
+        Me.Controls.Add(Me.lblNumberOfOrders)
         Me.Controls.Add(Me.btnReload)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.panSummary)
@@ -123,6 +134,7 @@ Partial Class frmOrderSummary
         Me.panOrdSumHeader.ResumeLayout(False)
         Me.panOrdSumHeader.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents lblOrderID As System.Windows.Forms.Label
@@ -133,4 +145,5 @@ Partial Class frmOrderSummary
     Friend WithEvents panOrdSumHeader As System.Windows.Forms.Panel
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents btnReload As System.Windows.Forms.Button
+    Friend WithEvents lblNumberOfOrders As System.Windows.Forms.Label
 End Class
